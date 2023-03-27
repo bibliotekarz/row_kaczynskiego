@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr" style="height: 100%">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rów Kaczyńskiego statystyki przeprawy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="files/bulma.min.css"> 
+  <!-- <meta http-equiv="refresh" content="2" /> -->
+  
+  <style>
+    body {
+      font-family: 'Atkinson Hyperlegible', sans-serif;
+    }
+  </style>
+</head>
+<body style="height: 100%; margin: 0">
+<section class="hero is-info is-large">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <h1 class="is-danger is-size-2">
+            Statystyki rowu kaczyńskiego
+          </h1>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item">
+              Wykresy
+            </a>
+            <a class="navbar-item" href="files/informacja_publiczna/20230316070741.pdf">
+                Oficjalne dokumenty z Urzędu Morskiego w Gdyni
+            </a>
+            <span class="navbar-item">
+              <a class="button is-info is-inverted" href="files/dane.csv">
+                <span>Pobierz dane </span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>  
+
+<div class="block">
+  <div class="columns">
+    <div class="column is-half">
+      
+  <div id="main" style="height: 300px"></div>
+    </div>
+    <div class="column">
+      <article class="message is-warning">
+        <div class="message-header">
+          <p>Duże przeprawy ogółem</p>
+        </div>
+        <div class="notification is-primary">
+                <h1 class="title is-1 has-text-centered">215</h1>
+      
+        </div>
+      </article>
+            <article class="message is-warning">
+        <div class="message-header">
+          <p>Małe przeprawy ogółem</p>
+        </div>
+        <div class="notification is-primary">
+                <h1 class="title is-1 has-text-centered">123</h1>
+      
+        </div>
+      </article>
+      </div>
+    <div class="column">
+duda
+    </div>
+  </div>
+</div>
+<figure class="image is-3by1">
+  <img style="height: auto; width: 100%;" src="files/row.jpg">
+</figure>
+<div class="block">
+
+  <div id="container2"></div>
+</div>
+<div class="hero-body" style="background-size: 100%;  background-repeat: no-repeat; background-image: url('files/duda.webp'); ">
+
+  <div class="columns is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+    <div class="column">Auto
+    </div>
+    <div class="column">Auto</div>
+    <div class="column is-half">
+      <div class="container">
+        <p class="bd-notification is-primary">parampam</p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+<script type="text/javascript">
+
+  var chartDom = document.getElementById('main');
+  var myChart = echarts.init(chartDom, 'dark', {
+    renderer: 'svg'
+  });
+  var option;
+  
+  option = {
+    title: {
+      text: 'Kierunek Zalew Wiślany'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      }
+    },
+    legend: {
+      data: ['Duże z podnoszeniem mostu', 'Małe bez podnoszenia mostu']
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Wrzesień 2022', 'Październik 2022', 'Listopad 2022', 'Grudzień 2022', 'Styczeń 2023', 'Luty 2023']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value'
+      }
+    ],
+    series: [
+      {
+        name: 'Duże z podnoszeniem mostu',
+        type: 'line',
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [115, 63, 17, 9, 20, 15]
+      },
+      {
+        name: 'Małe bez podnoszenia mostu',
+        type: 'line',
+        stack: 'Total',
+        areaStyle: {},
+        emphasis: {
+          focus: 'series'
+        },
+        data: [100,48,20,28,7,14]
+      }
+    ]
+  };
+  
+  option && myChart.setOption(option);
+  
+</script>
+</body>
+
+</html>
+2022-09;115;100;1;7
+2022-10;63;48;17;20
+2022-11;17;20;8;8
+2022-12;9;28;4;2
+2023-01;20;7;5;4
+2023-02;15;14;5;4
